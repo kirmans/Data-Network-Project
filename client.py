@@ -3,7 +3,7 @@ import pickle
 #client1
 
 ClientSocket = socket.socket()
-host = "192.168.1.22"
+host = "...."
 port = 4000
 Input = ""
 

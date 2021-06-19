@@ -57,7 +57,7 @@ def threaded_client(conn):
 
 if __name__ == '__main__':
     ServerSocket = socket.socket()
-    host = "192.168.1.22"
+    host = "...."
     port = 4000
     ThreadCount = 0
     try:
