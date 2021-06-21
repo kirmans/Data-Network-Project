@@ -3,8 +3,8 @@ import pickle
 #client1
 
 ClientSocket = socket.socket()
-host = "...."
-port = 4000
+host = "18.220.97.192"
+port = 9999
 Input = ""
 
 print('Waiting for connection')

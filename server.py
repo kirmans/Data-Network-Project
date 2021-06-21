@@ -27,21 +27,21 @@ def threaded_client(conn):
         elif(data == 'check stock'):
             s = ""
             if (stock['IceTea'] == 0):
-                s = s + "Stokta kola yok"
+                s = s + "There is no IceTea in stock\n"
 
 
             else:
-                s = s + "Gerekli IceTea: " + str(int(stock['IceTea']) - int(stock['mevcut IceTea'])) + "\n"
+                s = s + "Required IceTea: " + str(int(stock['capacity IceTea']) - int(stock['mevcut IceTea'])) + "\n"
 
             if (stock['Water'] == 0):
-                s = s + "Stokta Water yok"
+                s = s + "There is no Water in stock\n"
             else:
-                s = s + "Gerekli Water: " + str(int(stock['Water']) - int(stock['mevcut Water'])) + "\n"
+                s = s + "Required Water: " + str(int(stock['capacity Water']) - int(stock['mevcut Water'])) + "\n"
 
             if (stock['Soda'] == 0):
-                s = s + "Stokta Soda yok"
+                s = s + "There is no Soda in stock\n"
             else:
-                s = s + "Gerekli Soda: " + str(int(stock['Soda']) - int(stock['mevcut Soda']))  + "\n"
+                s = s + "Required Soda: " + str(int(stock['capacity Soda']) - int(stock['mevcut Soda']))  + "\n"
             conn.send(s.encode())  # send data to the client
         else:
             s = "Command not found"
@@ -58,7 +58,7 @@ def threaded_client(conn):
 if __name__ == '__main__':
     ServerSocket = socket.socket()
     host = "...."
-    port = 4000
+    port = 4001
     ThreadCount = 0
     try:
         ServerSocket.bind((host, port))
@@ -67,7 +67,7 @@ if __name__ == '__main__':
 
     print('Waitiing for a Connection..')
     ServerSocket.listen(2)
-    stock = {'IceTea': 10, 'Water': 10, 'Soda': 10, 'mevcut IceTea': 0, 'mevcut Water': 0, 'mevcut Soda': 0}
+    stock = {'IceTea': 10, 'Water': 10, 'Soda': 10, 'capacity IceTea': 5, 'capacity Water': 8, 'capacity Soda': 7, 'mevcut IceTea': 0, 'mevcut Water': 0, 'mevcut Soda': 0}
     recd = {'IceTea': 0, 'Water': 0, 'Soda': 0}
     while True:
         stock = stock
